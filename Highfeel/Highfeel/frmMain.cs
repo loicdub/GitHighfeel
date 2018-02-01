@@ -16,5 +16,10 @@ namespace Highfeel
         {
             InitializeComponent();
         }
+
+        private void pbCloseButton_Click(object sender, EventArgs e)
+        {
+            Application.Exit(); //Closes application
+        }
     }
 }
