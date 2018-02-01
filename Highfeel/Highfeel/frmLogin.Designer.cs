@@ -28,11 +28,13 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.btnLogin = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.tbxID = new System.Windows.Forms.TextBox();
             this.tbxPWD = new System.Windows.Forms.TextBox();
+            this.bunifuElipse1 = new ns1.BunifuElipse(this.components);
             this.SuspendLayout();
             // 
             // btnLogin
@@ -80,6 +82,11 @@
             this.tbxPWD.TabIndex = 1;
             this.tbxPWD.TextChanged += new System.EventHandler(this.tbxPWD_TextChanged);
             // 
+            // bunifuElipse1
+            // 
+            this.bunifuElipse1.ElipseRadius = 5;
+            this.bunifuElipse1.TargetControl = this;
+            // 
             // frmMainLogin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -90,7 +97,7 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.btnLogin);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.MaximizeBox = false;
             this.Name = "frmMainLogin";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -107,6 +114,7 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox tbxID;
         private System.Windows.Forms.TextBox tbxPWD;
+        private ns1.BunifuElipse bunifuElipse1;
     }
 }
 
