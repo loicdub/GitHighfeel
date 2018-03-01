@@ -127,11 +127,8 @@
   <ItemGroup>
     <None Include="Resources\close.png" />
   </ItemGroup>
-<<<<<<< HEAD
-=======
   <ItemGroup>
     <None Include="Resources\highfeel_icon.png" />
   </ItemGroup>
->>>>>>> aff650f26e390ab38a6948f3f85a863d4d18f025
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

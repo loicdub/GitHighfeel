@@ -83,8 +83,6 @@ namespace Highfeel.Properties {
         /// <summary>
         ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
         /// </summary>
-<<<<<<< HEAD
-=======
         internal static System.Drawing.Bitmap highfeel_icon {
             get {
                 object obj = ResourceManager.GetObject("highfeel_icon", resourceCulture);
@@ -95,7 +93,6 @@ namespace Highfeel.Properties {
         /// <summary>
         ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
         /// </summary>
->>>>>>> aff650f26e390ab38a6948f3f85a863d4d18f025
         internal static System.Drawing.Bitmap logo {
             get {
                 object obj = ResourceManager.GetObject("logo", resourceCulture);
