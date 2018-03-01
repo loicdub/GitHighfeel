@@ -10,16 +10,11 @@ using System.Windows.Forms;
 
 namespace Highfeel
 {
-    public partial class frmMain : Form
+    public partial class frmRegister : Form
     {
-        public frmMain()
+        public frmRegister()
         {
             InitializeComponent();
-        }
-
-        private void pbCloseButton_Click(object sender, EventArgs e)
-        {
-            Application.Exit(); //Closes application
         }
     }
 }
