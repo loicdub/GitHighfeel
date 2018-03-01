@@ -10,9 +10,12 @@ using System.Windows.Forms;
 
 namespace HighFeel
 {
-    public partial class frmMainLogin : Form
+    public partial class frmLogin : Form
     {
-        public frmMainLogin()
+        // Initialise une instance de connexion à la base de donnée
+        ConnectDB dbc = new ConnectDB();
+
+        public frmLogin()
         {
             InitializeComponent();
         }
@@ -36,6 +39,42 @@ namespace HighFeel
                 btnLogin.Enabled = true;
             else
                 btnLogin.Enabled = false;
+        }
+
+        // Vérifie les données de connection administrateur
+        public bool loginAdminOK()
+        {
+            bool loginIsOk = false;
+            // Si la requête SQL retourne true, le login est OK
+            if (dbc.loginsql(tbxID.Text, tbxPWD.Text))
+            {
+                loginIsOk = true;
+            }
+            // Sinon
+            else
+            {
+                loginIsOk = false;
+            }
+
+            return loginIsOk;
+        }
+
+        // Vérifie les données de connection utilisateur
+        public bool loginUserOK()
+        {
+            bool loginIsOk = false;
+            // Si la requête SQL retourne true, le login est OK
+            if (dbc.loginsql(tbxID.Text, tbxPWD.Text))
+            {
+                loginIsOk = true;
+            }
+            // Sinon
+            else
+            {
+                loginIsOk = false;
+            }
+
+            return loginIsOk;
         }
     }
 }

@@ -12,6 +12,8 @@ namespace Highfeel
 {
     public partial class frmMain : Form
     {
+        ConnectDB dbc = new ConnectDB();
+
         public frmMain()
         {
             InitializeComponent();
@@ -20,6 +22,11 @@ namespace Highfeel
         private void pbCloseButton_Click(object sender, EventArgs e)
         {
             Application.Exit(); //Closes application
+        }
+
+        private void pictureBox2_Click(object sender, EventArgs e)
+        {
+            //connexion = new frmLogin();
         }
     }
 }

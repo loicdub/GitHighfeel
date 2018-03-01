@@ -1,6 +1,6 @@
 ﻿namespace HighFeel
 {
-    partial class frmMainLogin
+    partial class frmLogin
     {
         /// <summary>
         /// Variable nécessaire au concepteur.
@@ -87,7 +87,7 @@
             this.bunifuElipse1.ElipseRadius = 5;
             this.bunifuElipse1.TargetControl = this;
             // 
-            // frmMainLogin
+            // frmLogin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -100,7 +100,7 @@
             this.Controls.Add(this.btnLogin);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.MaximizeBox = false;
-            this.Name = "frmMainLogin";
+            this.Name = "frmLogin";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "HighFeel";
             this.ResumeLayout(false);
