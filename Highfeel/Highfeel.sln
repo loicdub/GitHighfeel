@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27130.2036
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Highfeel", "Highfeel\Highfeel.csproj", "{F4890F1F-59C7-4A00-99EA-2C817FF6E609}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F4890F1F-59C7-4A00-99EA-2C817FF6E609}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F4890F1F-59C7-4A00-99EA-2C817FF6E609}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F4890F1F-59C7-4A00-99EA-2C817FF6E609}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F4890F1F-59C7-4A00-99EA-2C817FF6E609}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {179DE24E-A7A3-4BD1-B122-295BA847B44F}
+	EndGlobalSection
+EndGlobal
