@@ -74,6 +74,7 @@
             this.pbxGrade10 = new System.Windows.Forms.PictureBox();
             this.pbxGrade9 = new System.Windows.Forms.PictureBox();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.tbxMembers = new System.Windows.Forms.TextBox();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbxGrade1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbxGrade6)).BeginInit();
@@ -96,7 +97,7 @@
             this.helpToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(912, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(917, 24);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -122,7 +123,7 @@
             this.tsmConnection.Image = ((System.Drawing.Image)(resources.GetObject("tsmConnection.Image")));
             this.tsmConnection.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsmConnection.Name = "tsmConnection";
-            this.tsmConnection.Size = new System.Drawing.Size(146, 22);
+            this.tsmConnection.Size = new System.Drawing.Size(152, 22);
             this.tsmConnection.Text = "Connexion";
             this.tsmConnection.Click += new System.EventHandler(this.tsmConnection_Click);
             // 
@@ -343,7 +344,7 @@
             // dateTimePicker1
             // 
             this.dateTimePicker1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.dateTimePicker1.Location = new System.Drawing.Point(586, 27);
+            this.dateTimePicker1.Location = new System.Drawing.Point(591, 27);
             this.dateTimePicker1.Name = "dateTimePicker1";
             this.dateTimePicker1.Size = new System.Drawing.Size(314, 20);
             this.dateTimePicker1.TabIndex = 3;
@@ -351,7 +352,7 @@
             // pbxGrade1
             // 
             this.pbxGrade1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.pbxGrade1.Location = new System.Drawing.Point(586, 53);
+            this.pbxGrade1.Location = new System.Drawing.Point(591, 53);
             this.pbxGrade1.Name = "pbxGrade1";
             this.pbxGrade1.Size = new System.Drawing.Size(58, 58);
             this.pbxGrade1.TabIndex = 4;
@@ -361,16 +362,16 @@
             // lblAverageGrade
             // 
             this.lblAverageGrade.AutoSize = true;
-            this.lblAverageGrade.Location = new System.Drawing.Point(158, 350);
+            this.lblAverageGrade.Location = new System.Drawing.Point(158, 336);
             this.lblAverageGrade.Name = "lblAverageGrade";
-            this.lblAverageGrade.Size = new System.Drawing.Size(35, 13);
+            this.lblAverageGrade.Size = new System.Drawing.Size(75, 13);
             this.lblAverageGrade.TabIndex = 5;
-            this.lblAverageGrade.Text = "label1";
+            this.lblAverageGrade.Text = "Moyenne de : ";
             // 
             // pbxGrade6
             // 
             this.pbxGrade6.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.pbxGrade6.Location = new System.Drawing.Point(586, 117);
+            this.pbxGrade6.Location = new System.Drawing.Point(591, 117);
             this.pbxGrade6.Name = "pbxGrade6";
             this.pbxGrade6.Size = new System.Drawing.Size(58, 58);
             this.pbxGrade6.TabIndex = 10;
@@ -380,7 +381,7 @@
             // pbxGrade2
             // 
             this.pbxGrade2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.pbxGrade2.Location = new System.Drawing.Point(650, 53);
+            this.pbxGrade2.Location = new System.Drawing.Point(655, 53);
             this.pbxGrade2.Name = "pbxGrade2";
             this.pbxGrade2.Size = new System.Drawing.Size(58, 58);
             this.pbxGrade2.TabIndex = 11;
@@ -390,7 +391,7 @@
             // pbxGrade8
             // 
             this.pbxGrade8.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.pbxGrade8.Location = new System.Drawing.Point(714, 117);
+            this.pbxGrade8.Location = new System.Drawing.Point(719, 117);
             this.pbxGrade8.Name = "pbxGrade8";
             this.pbxGrade8.Size = new System.Drawing.Size(58, 58);
             this.pbxGrade8.TabIndex = 12;
@@ -400,7 +401,7 @@
             // pbxGrade4
             // 
             this.pbxGrade4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.pbxGrade4.Location = new System.Drawing.Point(778, 53);
+            this.pbxGrade4.Location = new System.Drawing.Point(783, 53);
             this.pbxGrade4.Name = "pbxGrade4";
             this.pbxGrade4.Size = new System.Drawing.Size(58, 58);
             this.pbxGrade4.TabIndex = 13;
@@ -410,7 +411,7 @@
             // pbxGrade3
             // 
             this.pbxGrade3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.pbxGrade3.Location = new System.Drawing.Point(714, 53);
+            this.pbxGrade3.Location = new System.Drawing.Point(719, 53);
             this.pbxGrade3.Name = "pbxGrade3";
             this.pbxGrade3.Size = new System.Drawing.Size(58, 58);
             this.pbxGrade3.TabIndex = 14;
@@ -420,7 +421,7 @@
             // pbxGrade5
             // 
             this.pbxGrade5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.pbxGrade5.Location = new System.Drawing.Point(842, 53);
+            this.pbxGrade5.Location = new System.Drawing.Point(847, 53);
             this.pbxGrade5.Name = "pbxGrade5";
             this.pbxGrade5.Size = new System.Drawing.Size(58, 58);
             this.pbxGrade5.TabIndex = 15;
@@ -430,7 +431,7 @@
             // pbxGrade7
             // 
             this.pbxGrade7.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.pbxGrade7.Location = new System.Drawing.Point(650, 117);
+            this.pbxGrade7.Location = new System.Drawing.Point(655, 117);
             this.pbxGrade7.Name = "pbxGrade7";
             this.pbxGrade7.Size = new System.Drawing.Size(58, 58);
             this.pbxGrade7.TabIndex = 16;
@@ -440,7 +441,7 @@
             // pbxGrade10
             // 
             this.pbxGrade10.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.pbxGrade10.Location = new System.Drawing.Point(842, 117);
+            this.pbxGrade10.Location = new System.Drawing.Point(847, 117);
             this.pbxGrade10.Name = "pbxGrade10";
             this.pbxGrade10.Size = new System.Drawing.Size(58, 58);
             this.pbxGrade10.TabIndex = 17;
@@ -450,7 +451,7 @@
             // pbxGrade9
             // 
             this.pbxGrade9.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.pbxGrade9.Location = new System.Drawing.Point(778, 117);
+            this.pbxGrade9.Location = new System.Drawing.Point(783, 117);
             this.pbxGrade9.Name = "pbxGrade9";
             this.pbxGrade9.Size = new System.Drawing.Size(58, 58);
             this.pbxGrade9.TabIndex = 18;
@@ -473,11 +474,22 @@
             this.tableLayoutPanel1.Size = new System.Drawing.Size(200, 195);
             this.tableLayoutPanel1.TabIndex = 19;
             // 
+            // tbxMembers
+            // 
+            this.tbxMembers.Location = new System.Drawing.Point(158, 30);
+            this.tbxMembers.Multiline = true;
+            this.tbxMembers.Name = "tbxMembers";
+            this.tbxMembers.ReadOnly = true;
+            this.tbxMembers.Size = new System.Drawing.Size(422, 99);
+            this.tbxMembers.TabIndex = 20;
+            this.tbxMembers.Visible = false;
+            // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(912, 386);
+            this.ClientSize = new System.Drawing.Size(917, 386);
+            this.Controls.Add(this.tbxMembers);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Controls.Add(this.pbxGrade9);
             this.Controls.Add(this.pbxGrade10);
@@ -564,6 +576,7 @@
         private System.Windows.Forms.PictureBox pbxGrade10;
         private System.Windows.Forms.PictureBox pbxGrade9;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
+        private System.Windows.Forms.TextBox tbxMembers;
     }
 }
 

@@ -35,5 +35,29 @@ namespace Highfeel
 
             return loginIsOk;
         }
+
+        private void tbxUsername_TextChanged(object sender, EventArgs e)
+        {
+            if (tbxUsername.Text.Length > 0 && tbxPassword.Text.Length > 0)
+            {
+                btnLogin.Enabled = true;
+            }
+            else
+            {
+                btnLogin.Enabled = false;
+            }
+        }
+
+        private void tbxPassword_TextChanged(object sender, EventArgs e)
+        {
+            if (tbxUsername.Text.Length > 0 && tbxPassword.Text.Length > 0)
+            {
+                btnLogin.Enabled = true;
+            }
+            else
+            {
+                btnLogin.Enabled = false;
+            }
+        }
     }
 }

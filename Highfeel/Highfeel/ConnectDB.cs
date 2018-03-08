@@ -87,5 +87,34 @@ namespace Highfeel
             }
             return loginOK;
         }
+
+
+        // create a list of all the movies in db
+        //public List<Movie> selectAllMovies()
+        //{
+        //    string sqlSelectAllMovies = "SELECT movieID, movieName FROM movies ORDER BY movieName ASC";
+
+        //    List<Movie> liste = new List<Movie>();
+
+        //    if (OpenConnection())
+        //    {
+        //        MySqlCommand cmd = new MySqlCommand(sqlSelectAllMovies, this.connection);
+
+        //        MySqlDataReader donnees = cmd.ExecuteReader();
+
+        //        while (donnees.Read())
+        //        {
+        //            liste.Add(new Movie((int)donnees["movieID"], (string)donnees["movieName"]));
+        //        }
+
+        //        // close data
+        //        donnees.Close();
+
+        //        CloseConnection();
+        //    }
+
+        //    // return list of movies
+        //    return liste;
+        //}
     }
 }
