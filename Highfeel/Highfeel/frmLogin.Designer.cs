@@ -33,6 +33,7 @@
             this.tbxPassword = new System.Windows.Forms.TextBox();
             this.tbxUsername = new System.Windows.Forms.TextBox();
             this.btnLogin = new System.Windows.Forms.Button();
+            this.btnLoginCancel = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label1
@@ -59,6 +60,7 @@
             this.tbxPassword.Name = "tbxPassword";
             this.tbxPassword.Size = new System.Drawing.Size(100, 20);
             this.tbxPassword.TabIndex = 1;
+            this.tbxPassword.UseSystemPasswordChar = true;
             this.tbxPassword.TextChanged += new System.EventHandler(this.tbxPassword_TextChanged);
             // 
             // tbxUsername
@@ -73,12 +75,24 @@
             // 
             this.btnLogin.DialogResult = System.Windows.Forms.DialogResult.OK;
             this.btnLogin.Enabled = false;
-            this.btnLogin.Location = new System.Drawing.Point(15, 61);
+            this.btnLogin.Location = new System.Drawing.Point(6, 61);
             this.btnLogin.Name = "btnLogin";
-            this.btnLogin.Size = new System.Drawing.Size(183, 31);
+            this.btnLogin.Size = new System.Drawing.Size(86, 31);
             this.btnLogin.TabIndex = 2;
             this.btnLogin.Text = "Se connecter";
             this.btnLogin.UseVisualStyleBackColor = true;
+            this.btnLogin.Click += new System.EventHandler(this.btnLogin_Click);
+            // 
+            // btnLoginCancel
+            // 
+            this.btnLoginCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.btnLoginCancel.Location = new System.Drawing.Point(107, 61);
+            this.btnLoginCancel.Name = "btnLoginCancel";
+            this.btnLoginCancel.Size = new System.Drawing.Size(93, 31);
+            this.btnLoginCancel.TabIndex = 3;
+            this.btnLoginCancel.Text = "Quitter";
+            this.btnLoginCancel.UseVisualStyleBackColor = true;
+            this.btnLoginCancel.Click += new System.EventHandler(this.btnLoginCancel_Click);
             // 
             // frmLogin
             // 
@@ -86,6 +100,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(212, 102);
+            this.Controls.Add(this.btnLoginCancel);
             this.Controls.Add(this.btnLogin);
             this.Controls.Add(this.tbxUsername);
             this.Controls.Add(this.tbxPassword);
@@ -93,11 +108,12 @@
             this.Controls.Add(this.label1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "frmLogin";
             this.ShowIcon = false;
-            this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Connexion";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmLogin_FormClosing);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -110,5 +126,6 @@
         private System.Windows.Forms.TextBox tbxPassword;
         private System.Windows.Forms.TextBox tbxUsername;
         private System.Windows.Forms.Button btnLogin;
+        private System.Windows.Forms.Button btnLoginCancel;
     }
 }

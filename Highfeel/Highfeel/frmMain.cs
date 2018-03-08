@@ -15,10 +15,12 @@ namespace Highfeel
 {
     public partial class frmMain : Form
     {
+        frmLogin login = new frmLogin();
         ConnectDB dbc = new ConnectDB();
         public frmMain()
         {
             InitializeComponent();
+            login.ShowDialog(this);
             pbxGrade1.BackgroundImage = Properties.Resources._1;
             pbxGrade2.BackgroundImage = Properties.Resources._2;
             pbxGrade3.BackgroundImage = Properties.Resources._3;
@@ -31,33 +33,10 @@ namespace Highfeel
             pbxGrade10.BackgroundImage = Properties.Resources._10;
         }
 
-        private void tsmConnection_Click(object sender, EventArgs e)
-        {
-            frmLogin login = new frmLogin();
-
-            if (login.ShowDialog() == DialogResult.OK)
-            {
-                if (login.loginOK())
-                {
-                    MessageBox.Show("Le mot de passe est correct !", "Information", MessageBoxButtons.OK);
-                    tsmConnection.Enabled = false;
-                    //deconnexionToolStripMenuItem.Enabled = true;
-
-                }
-                else
-                    MessageBox.Show("Le mot de passe est erroné !", "Information", MessageBoxButtons.OK);
-            }
-        }
-
-        private void tsmExit_Click(object sender, EventArgs e)
-        {
-            Application.Exit();
-        }
-
         #region pbxGrade
         private void pbxGrade1_Click(object sender, EventArgs e)
         {
-                        
+
         }
 
         private void pbxGrade2_Click(object sender, EventArgs e)

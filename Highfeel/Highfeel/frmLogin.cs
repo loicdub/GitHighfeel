@@ -59,5 +59,30 @@ namespace Highfeel
                 btnLogin.Enabled = false;
             }
         }
+
+        private void btnLogin_Click(object sender, EventArgs e)
+        {
+            if (loginOK())
+            {
+                MessageBox.Show("Le mot de passe est correct !", "Information", MessageBoxButtons.OK);
+                //tsmConnection.Enabled = false;
+                //login.Close();
+                //deconnexionToolStripMenuItem.Enabled = true;
+            }
+            else
+            {
+                MessageBox.Show("Le mot de passe est erroné !", "Information", MessageBoxButtons.OK);
+            }
+        }
+
+        private void btnLoginCancel_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
+
+        private void frmLogin_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Application.Exit();
+        }
     }
 }
