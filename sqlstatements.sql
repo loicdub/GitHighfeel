@@ -19,3 +19,7 @@ INSERT INTO `highfeel`.`belongs` (`clanId`, `userID`) VALUES ('/* selected clanI
 
 /* Show all users */
 SELECT * FROM `user`
+
+/* Send note */
+INSERT INTO `highfeel`.`mood` (`moodID`, `moodRate`, `moodDate`) VALUES (NULL, '/* note clicked by user */', '/* selected date */');
+INSERT INTO `highfeel`.`feels` (`userID`, `moodID`) VALUES ('/* connected userId */', '/* moodId */');
