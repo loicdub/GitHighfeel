@@ -255,6 +255,7 @@
             this.Name = "frmMain";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Highfeel";
+            this.Load += new System.EventHandler(this.frmMain_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pbxGrade1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbxGrade6)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbxGrade2)).EndInit();

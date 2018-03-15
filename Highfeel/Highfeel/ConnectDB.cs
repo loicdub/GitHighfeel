@@ -149,32 +149,27 @@ namespace Highfeel
             }
         }
 
-        // create a list of all the movies in db
-        //public List<Movie> selectAllMovies()
-        //{
-        //    string sqlSelectAllMovies = "SELECT movieID, movieName FROM movies ORDER BY movieName ASC";
+        public List<Clan> getAllClanByUser(string connectedUserId) {
+            List<Clan> list = new List<Clan>();
 
-        //    List<Movie> liste = new List<Movie>();
+            string sqlgetAllClan = "SELECT DISTINCT `clan`.`clanId`, `clan`.`clanName`, `clan`.`clanAdmin` FROM `clan`, `user`, `belongs` WHERE `clan`.`clanId` = `belongs`.`clanId` AND `belongs`.`userId` = '" + connectedUserId + "';";
 
-        //    if (OpenConnection())
-        //    {
-        //        MySqlCommand cmd = new MySqlCommand(sqlSelectAllMovies, this.connection);
+            if (OpenConnection())
+            {
+                MySqlCommand cmdCreateClan = new MySqlCommand(sqlgetAllClan, this.connection);
+                MySqlDataReader data = cmdCreateClan.ExecuteReader();
 
-        //        MySqlDataReader donnees = cmd.ExecuteReader();
+                while (data.Read())
+                {
+                    list.Add(new Clan((int)data["clanId"], (string)data["clanName"], (int)data["clanAdmin"]));
+                }
 
-        //        while (donnees.Read())
-        //        {
-        //            liste.Add(new Movie((int)donnees["movieID"], (string)donnees["movieName"]));
-        //        }
+                data.Close();
+                
+                CloseConnection();
+            }
 
-        //        // close data
-        //        donnees.Close();
-
-        //        CloseConnection();
-        //    }
-
-        //    // return list of movies
-        //    return liste;
-        //}
+            return list;
+        }        
     }
 }

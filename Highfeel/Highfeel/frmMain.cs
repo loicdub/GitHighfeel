@@ -93,7 +93,20 @@ namespace Highfeel
             if (clan.ShowDialog() == DialogResult.OK)
             {
                 clan.createClan();
+                UpdateClanList();
             }
+        }
+
+        private void UpdateClanList()
+        {
+            lbClan.DataSource = dbc.getAllClanByUser(dbc.getUserIdByUsername(login.UserConnected));
+            lbClan.DisplayMember = "clanName";
+            lbClan.ValueMember = "clanId";
+        }
+
+        private void frmMain_Load(object sender, EventArgs e)
+        {
+            UpdateClanList();
         }
     }
 }
