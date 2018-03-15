@@ -84,5 +84,10 @@ namespace Highfeel
 
         }
         #endregion
+
+        private void btnCreateClan_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

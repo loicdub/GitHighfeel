@@ -65,9 +65,6 @@ namespace Highfeel
             if (loginOK())
             {
                 MessageBox.Show("Le mot de passe est correct !", "Information", MessageBoxButtons.OK);
-                //tsmConnection.Enabled = false;
-                //login.Close();
-                //deconnexionToolStripMenuItem.Enabled = true;
             }
             else
             {
@@ -82,7 +79,10 @@ namespace Highfeel
 
         private void frmLogin_FormClosing(object sender, FormClosingEventArgs e)
         {
-            Application.Exit();
+            if (!loginOK())
+            {
+                Application.Exit();
+            }
         }
     }
 }

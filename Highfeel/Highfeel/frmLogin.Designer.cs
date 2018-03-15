@@ -60,6 +60,7 @@
             this.tbxPassword.Name = "tbxPassword";
             this.tbxPassword.Size = new System.Drawing.Size(100, 20);
             this.tbxPassword.TabIndex = 1;
+            this.tbxPassword.Text = "Super";
             this.tbxPassword.UseSystemPasswordChar = true;
             this.tbxPassword.TextChanged += new System.EventHandler(this.tbxPassword_TextChanged);
             // 
@@ -69,6 +70,7 @@
             this.tbxUsername.Name = "tbxUsername";
             this.tbxUsername.Size = new System.Drawing.Size(100, 20);
             this.tbxUsername.TabIndex = 0;
+            this.tbxUsername.Text = "admin";
             this.tbxUsername.TextChanged += new System.EventHandler(this.tbxUsername_TextChanged);
             // 
             // btnLogin

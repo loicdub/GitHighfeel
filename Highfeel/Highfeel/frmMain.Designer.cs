@@ -72,6 +72,7 @@
             this.btnCreateClan.TabIndex = 2;
             this.btnCreateClan.Text = "Créer un clan";
             this.btnCreateClan.UseVisualStyleBackColor = true;
+            this.btnCreateClan.Click += new System.EventHandler(this.btnCreateClan_Click);
             // 
             // dateTimePicker1
             // 

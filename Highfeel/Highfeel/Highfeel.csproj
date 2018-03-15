@@ -59,6 +59,12 @@
   <ItemGroup>
     <Compile Include="Clan.cs" />
     <Compile Include="ConnectDB.cs" />
+    <Compile Include="frmClan.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmClan.Designer.cs">
+      <DependentUpon>frmClan.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmLogin.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -73,6 +79,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="frmClan.resx">
+      <DependentUpon>frmClan.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmLogin.resx">
       <DependentUpon>frmLogin.cs</DependentUpon>
     </EmbeddedResource>
