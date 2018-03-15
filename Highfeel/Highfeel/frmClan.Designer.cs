@@ -48,9 +48,12 @@
             this.tbxClanName.Name = "tbxClanName";
             this.tbxClanName.Size = new System.Drawing.Size(115, 20);
             this.tbxClanName.TabIndex = 1;
+            this.tbxClanName.TextChanged += new System.EventHandler(this.tbxClanName_TextChanged);
             // 
             // btnCreateClan
             // 
+            this.btnCreateClan.DialogResult = System.Windows.Forms.DialogResult.OK;
+            this.btnCreateClan.Enabled = false;
             this.btnCreateClan.Location = new System.Drawing.Point(12, 51);
             this.btnCreateClan.Name = "btnCreateClan";
             this.btnCreateClan.Size = new System.Drawing.Size(113, 23);
@@ -60,6 +63,7 @@
             // 
             // frmClan
             // 
+            this.AcceptButton = this.btnCreateClan;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(137, 82);

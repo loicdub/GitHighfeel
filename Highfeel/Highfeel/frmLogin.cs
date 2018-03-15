@@ -13,9 +13,26 @@ namespace Highfeel
     public partial class frmLogin : Form
     {
         ConnectDB dbc = new ConnectDB();
+        private string _userConnected;
+
+        public string UserConnected { get => _userConnected; set => _userConnected = value; }
+
         public frmLogin()
         {
             InitializeComponent();
+            securityTextbox();
+        }
+
+        private void securityTextbox()
+        {
+            if (tbxUsername.Text.Length > 0 && tbxPassword.Text.Length > 0)
+            {
+                btnLogin.Enabled = true;
+            }
+            else
+            {
+                btnLogin.Enabled = false;
+            }
         }
 
         // Vérifie les données de connection utilisateur
@@ -26,6 +43,7 @@ namespace Highfeel
             if (dbc.loginsql(tbxUsername.Text, tbxPassword.Text))
             {
                 loginIsOk = true;
+                this.UserConnected = tbxUsername.Text;
             }
             // Sinon
             else
@@ -38,33 +56,18 @@ namespace Highfeel
 
         private void tbxUsername_TextChanged(object sender, EventArgs e)
         {
-            if (tbxUsername.Text.Length > 0 && tbxPassword.Text.Length > 0)
-            {
-                btnLogin.Enabled = true;
-            }
-            else
-            {
-                btnLogin.Enabled = false;
-            }
+            securityTextbox();
         }
 
         private void tbxPassword_TextChanged(object sender, EventArgs e)
         {
-            if (tbxUsername.Text.Length > 0 && tbxPassword.Text.Length > 0)
-            {
-                btnLogin.Enabled = true;
-            }
-            else
-            {
-                btnLogin.Enabled = false;
-            }
+            securityTextbox();
         }
 
         private void btnLogin_Click(object sender, EventArgs e)
         {
             if (loginOK())
             {
-                MessageBox.Show("Le mot de passe est correct !", "Information", MessageBoxButtons.OK);
             }
             else
             {

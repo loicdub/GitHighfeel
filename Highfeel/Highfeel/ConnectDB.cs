@@ -88,6 +88,66 @@ namespace Highfeel
             return loginOK;
         }
 
+        public string getUserIdByUsername(string username) {
+            string userId = "";
+
+            string sqlGetUserId = "SELECT `userID` FROM `user` WHERE `userName` = '" + username +"'";
+
+            if (OpenConnection())
+            {
+                MySqlCommand cmd = new MySqlCommand(sqlGetUserId, this.connection);
+
+                MySqlDataReader data = cmd.ExecuteReader();
+
+                while (data.Read())
+                {
+                    userId = data["userID"].ToString();
+                }
+
+                data.Close();
+
+                CloseConnection();
+            }
+
+            return userId;
+        }
+
+        public void createClan(string clanName, string connectedUserId)
+        {
+            string currentClanId = "";
+
+            /* Create a clan with the connected user as the admin*/
+            string sqlCreateClan = "INSERT INTO `highfeel`.`clan` (`clanName`, `clanAdmin`) VALUES ('" + clanName + "', '" + connectedUserId + "');";
+
+            /* Get the clanId of the created clan */
+            string sqlGetClanId = "SELECT `clanId` FROM `clan` WHERE `clanName` = '" + clanName + "';";
+
+            
+
+            if (OpenConnection())
+            {
+                MySqlCommand cmdCreateClan = new MySqlCommand(sqlCreateClan, this.connection);
+                MySqlDataReader dataCreateClan = cmdCreateClan.ExecuteReader();
+                dataCreateClan.Close();
+
+                MySqlCommand cmdGetClanId = new MySqlCommand(sqlGetClanId, this.connection);
+                MySqlDataReader dataGetClanId  = cmdGetClanId.ExecuteReader();
+                while (dataGetClanId.Read())
+                {
+                    currentClanId = dataGetClanId["clanId"].ToString();
+                }
+                
+                dataGetClanId.Close();
+
+                /* Add the connected user as member of new clan */
+                string sqlAddUser = "INSERT INTO `highfeel`.`belongs` (`clanId`, `userID`) VALUES('" + currentClanId + "', '" + connectedUserId + "');";
+                MySqlCommand cmdAddUser = new MySqlCommand(sqlAddUser, this.connection);
+                MySqlDataReader dataAddUser = cmdAddUser.ExecuteReader();
+                dataAddUser.Close();
+
+                CloseConnection();
+            }
+        }
 
         // create a list of all the movies in db
         //public List<Movie> selectAllMovies()

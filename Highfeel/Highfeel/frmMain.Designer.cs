@@ -44,6 +44,7 @@
             this.pbxGrade9 = new System.Windows.Forms.PictureBox();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.tbxMembers = new System.Windows.Forms.TextBox();
+            this.lblConnectedUser = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pbxGrade1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbxGrade6)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbxGrade2)).BeginInit();
@@ -69,7 +70,7 @@
             this.btnCreateClan.Location = new System.Drawing.Point(12, 321);
             this.btnCreateClan.Name = "btnCreateClan";
             this.btnCreateClan.Size = new System.Drawing.Size(140, 40);
-            this.btnCreateClan.TabIndex = 2;
+            this.btnCreateClan.TabIndex = 0;
             this.btnCreateClan.Text = "Créer un clan";
             this.btnCreateClan.UseVisualStyleBackColor = true;
             this.btnCreateClan.Click += new System.EventHandler(this.btnCreateClan_Click);
@@ -217,11 +218,22 @@
             this.tbxMembers.TabIndex = 20;
             this.tbxMembers.Visible = false;
             // 
+            // lblConnectedUser
+            // 
+            this.lblConnectedUser.AutoSize = true;
+            this.lblConnectedUser.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblConnectedUser.Location = new System.Drawing.Point(474, 254);
+            this.lblConnectedUser.Name = "lblConnectedUser";
+            this.lblConnectedUser.Size = new System.Drawing.Size(68, 20);
+            this.lblConnectedUser.TabIndex = 21;
+            this.lblConnectedUser.Text = "Label 1";
+            // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(917, 368);
+            this.Controls.Add(this.lblConnectedUser);
             this.Controls.Add(this.tbxMembers);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Controls.Add(this.pbxGrade9);
@@ -275,6 +287,7 @@
         private System.Windows.Forms.PictureBox pbxGrade9;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.TextBox tbxMembers;
+        private System.Windows.Forms.Label lblConnectedUser;
     }
 }
 

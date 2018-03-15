@@ -31,6 +31,8 @@ namespace Highfeel
             pbxGrade8.BackgroundImage = Properties.Resources._8;
             pbxGrade9.BackgroundImage = Properties.Resources._9;
             pbxGrade10.BackgroundImage = Properties.Resources._10;
+
+            lblConnectedUser.Text = "Bonsoir, je suis Bob Lennon et vous êtes " + login.UserConnected + ".";
         }
 
         #region pbxGrade
@@ -87,7 +89,11 @@ namespace Highfeel
 
         private void btnCreateClan_Click(object sender, EventArgs e)
         {
-
+            frmClan clan = new frmClan(login.UserConnected);
+            if (clan.ShowDialog() == DialogResult.OK)
+            {
+                clan.createClan();
+            }
         }
     }
 }
