@@ -14,7 +14,7 @@ namespace Highfeel
     {
         // Initialise une instance de connexion à la base de donnée
         ConnectDB dbc = new ConnectDB();
-        frmLogin login = new frmLogin();
+        //frmLogin login = new frmLogin();
         private string _connectedUser;
 
         public frmClan(string connectedUser)

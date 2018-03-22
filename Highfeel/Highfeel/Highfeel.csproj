@@ -59,11 +59,23 @@
   <ItemGroup>
     <Compile Include="Clan.cs" />
     <Compile Include="ConnectDB.cs" />
+    <Compile Include="frmAddMember.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmAddMember.Designer.cs">
+      <DependentUpon>frmAddMember.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmClan.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="frmClan.Designer.cs">
       <DependentUpon>frmClan.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmComment.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmComment.Designer.cs">
+      <DependentUpon>frmComment.cs</DependentUpon>
     </Compile>
     <Compile Include="frmLogin.cs">
       <SubType>Form</SubType>
@@ -79,8 +91,15 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="User.cs" />
+    <EmbeddedResource Include="frmAddMember.resx">
+      <DependentUpon>frmAddMember.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmClan.resx">
       <DependentUpon>frmClan.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmComment.resx">
+      <DependentUpon>frmComment.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmLogin.resx">
       <DependentUpon>frmLogin.cs</DependentUpon>

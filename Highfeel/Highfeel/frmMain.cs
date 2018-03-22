@@ -21,6 +21,8 @@ namespace Highfeel
         {
             InitializeComponent();
             login.ShowDialog(this);
+            List<PictureBox> pbx = new List<PictureBox>();
+            
             pbxGrade1.BackgroundImage = Properties.Resources._1;
             pbxGrade2.BackgroundImage = Properties.Resources._2;
             pbxGrade3.BackgroundImage = Properties.Resources._3;
@@ -34,58 +36,6 @@ namespace Highfeel
 
             lblConnectedUser.Text = "Bonsoir, je suis Bob Lennon et vous êtes " + login.UserConnected + ".";
         }
-
-        #region pbxGrade
-        private void pbxGrade1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void pbxGrade2_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void pbxGrade3_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void pbxGrade4_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void pbxGrade5_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void pbxGrade6_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void pbxGrade7_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void pbxGrade8_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void pbxGrade9_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void pbxGrade10_Click(object sender, EventArgs e)
-        {
-
-        }
-        #endregion
 
         private void btnCreateClan_Click(object sender, EventArgs e)
         {
@@ -104,9 +54,52 @@ namespace Highfeel
             lbClan.ValueMember = "clanId";
         }
 
+        private void UpdateMemberList()
+        {
+            for (int i = 0; i < dbc.getAllUsersByClan(lbClan.SelectedValue.ToString()).Count; i++)
+            {
+                tbxMembers.Text += dbc.getAllUsersByClan(lbClan.SelectedValue.ToString())[i] + ", ";
+            }
+        }
+
         private void frmMain_Load(object sender, EventArgs e)
         {
             UpdateClanList();
+            UpdateMemberList();
+        }
+
+        private void lbClan_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            tbxMembers.Text = "";
+            UpdateMemberList();
+        }
+
+        private void btnAddMember_Click(object sender, EventArgs e)
+        {
+            frmAddMember addMember = new frmAddMember();
+            if (addMember.ShowDialog() == DialogResult.OK)
+            {
+                try
+                {
+                    dbc.addMember(lbClan.SelectedValue.ToString(), addMember.NewMember);
+                    tbxMembers.Text = "";
+                    UpdateMemberList();
+                }
+                catch (Exception)
+                {
+                    MessageBox.Show("Ce membre est déjà dans ce clan !");
+                }                
+            }
+        }
+
+        private void pbx_Click(object sender, EventArgs e)
+        {
+            frmComment comment = new frmComment();
+
+            if (comment.ShowDialog() == DialogResult.OK)
+            {
+
+            }
         }
     }
 }

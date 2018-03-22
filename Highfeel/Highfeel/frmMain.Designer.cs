@@ -45,6 +45,7 @@
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.tbxMembers = new System.Windows.Forms.TextBox();
             this.lblConnectedUser = new System.Windows.Forms.Label();
+            this.btnAddMember = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pbxGrade1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbxGrade6)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbxGrade2)).BeginInit();
@@ -64,6 +65,7 @@
             this.lbClan.Name = "lbClan";
             this.lbClan.Size = new System.Drawing.Size(140, 303);
             this.lbClan.TabIndex = 1;
+            this.lbClan.SelectedIndexChanged += new System.EventHandler(this.lbClan_SelectedIndexChanged);
             // 
             // btnCreateClan
             // 
@@ -78,6 +80,7 @@
             // dateTimePicker1
             // 
             this.dateTimePicker1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.dateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dateTimePicker1.Location = new System.Drawing.Point(591, 12);
             this.dateTimePicker1.Name = "dateTimePicker1";
             this.dateTimePicker1.Size = new System.Drawing.Size(314, 20);
@@ -91,7 +94,8 @@
             this.pbxGrade1.Size = new System.Drawing.Size(58, 58);
             this.pbxGrade1.TabIndex = 4;
             this.pbxGrade1.TabStop = false;
-            this.pbxGrade1.Click += new System.EventHandler(this.pbxGrade1_Click);
+            this.pbxGrade1.Tag = "1";
+            this.pbxGrade1.Click += new System.EventHandler(this.pbx_Click);
             // 
             // lblAverageGrade
             // 
@@ -110,7 +114,7 @@
             this.pbxGrade6.Size = new System.Drawing.Size(58, 58);
             this.pbxGrade6.TabIndex = 10;
             this.pbxGrade6.TabStop = false;
-            this.pbxGrade6.Click += new System.EventHandler(this.pbxGrade6_Click);
+            this.pbxGrade6.Click += new System.EventHandler(this.pbx_Click);
             // 
             // pbxGrade2
             // 
@@ -120,7 +124,8 @@
             this.pbxGrade2.Size = new System.Drawing.Size(58, 58);
             this.pbxGrade2.TabIndex = 11;
             this.pbxGrade2.TabStop = false;
-            this.pbxGrade2.Click += new System.EventHandler(this.pbxGrade2_Click);
+            this.pbxGrade2.Tag = "2";
+            this.pbxGrade2.Click += new System.EventHandler(this.pbx_Click);
             // 
             // pbxGrade8
             // 
@@ -130,7 +135,7 @@
             this.pbxGrade8.Size = new System.Drawing.Size(58, 58);
             this.pbxGrade8.TabIndex = 12;
             this.pbxGrade8.TabStop = false;
-            this.pbxGrade8.Click += new System.EventHandler(this.pbxGrade8_Click);
+            this.pbxGrade8.Click += new System.EventHandler(this.pbx_Click);
             // 
             // pbxGrade4
             // 
@@ -140,7 +145,7 @@
             this.pbxGrade4.Size = new System.Drawing.Size(58, 58);
             this.pbxGrade4.TabIndex = 13;
             this.pbxGrade4.TabStop = false;
-            this.pbxGrade4.Click += new System.EventHandler(this.pbxGrade4_Click);
+            this.pbxGrade4.Click += new System.EventHandler(this.pbx_Click);
             // 
             // pbxGrade3
             // 
@@ -150,7 +155,8 @@
             this.pbxGrade3.Size = new System.Drawing.Size(58, 58);
             this.pbxGrade3.TabIndex = 14;
             this.pbxGrade3.TabStop = false;
-            this.pbxGrade3.Click += new System.EventHandler(this.pbxGrade3_Click);
+            this.pbxGrade3.Tag = "3";
+            this.pbxGrade3.Click += new System.EventHandler(this.pbx_Click);
             // 
             // pbxGrade5
             // 
@@ -160,7 +166,7 @@
             this.pbxGrade5.Size = new System.Drawing.Size(58, 58);
             this.pbxGrade5.TabIndex = 15;
             this.pbxGrade5.TabStop = false;
-            this.pbxGrade5.Click += new System.EventHandler(this.pbxGrade5_Click);
+            this.pbxGrade5.Click += new System.EventHandler(this.pbx_Click);
             // 
             // pbxGrade7
             // 
@@ -170,7 +176,7 @@
             this.pbxGrade7.Size = new System.Drawing.Size(58, 58);
             this.pbxGrade7.TabIndex = 16;
             this.pbxGrade7.TabStop = false;
-            this.pbxGrade7.Click += new System.EventHandler(this.pbxGrade7_Click);
+            this.pbxGrade7.Click += new System.EventHandler(this.pbx_Click);
             // 
             // pbxGrade10
             // 
@@ -180,7 +186,7 @@
             this.pbxGrade10.Size = new System.Drawing.Size(58, 58);
             this.pbxGrade10.TabIndex = 17;
             this.pbxGrade10.TabStop = false;
-            this.pbxGrade10.Click += new System.EventHandler(this.pbxGrade10_Click);
+            this.pbxGrade10.Click += new System.EventHandler(this.pbx_Click);
             // 
             // pbxGrade9
             // 
@@ -190,7 +196,7 @@
             this.pbxGrade9.Size = new System.Drawing.Size(58, 58);
             this.pbxGrade9.TabIndex = 18;
             this.pbxGrade9.TabStop = false;
-            this.pbxGrade9.Click += new System.EventHandler(this.pbxGrade9_Click);
+            this.pbxGrade9.Click += new System.EventHandler(this.pbx_Click);
             // 
             // tableLayoutPanel1
             // 
@@ -210,29 +216,40 @@
             // 
             // tbxMembers
             // 
+            this.tbxMembers.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tbxMembers.Location = new System.Drawing.Point(158, 15);
             this.tbxMembers.Multiline = true;
             this.tbxMembers.Name = "tbxMembers";
             this.tbxMembers.ReadOnly = true;
             this.tbxMembers.Size = new System.Drawing.Size(422, 99);
             this.tbxMembers.TabIndex = 20;
-            this.tbxMembers.Visible = false;
             // 
             // lblConnectedUser
             // 
             this.lblConnectedUser.AutoSize = true;
             this.lblConnectedUser.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblConnectedUser.Location = new System.Drawing.Point(474, 254);
+            this.lblConnectedUser.Location = new System.Drawing.Point(290, 330);
             this.lblConnectedUser.Name = "lblConnectedUser";
             this.lblConnectedUser.Size = new System.Drawing.Size(68, 20);
             this.lblConnectedUser.TabIndex = 21;
             this.lblConnectedUser.Text = "Label 1";
             // 
+            // btnAddMember
+            // 
+            this.btnAddMember.Location = new System.Drawing.Point(783, 321);
+            this.btnAddMember.Name = "btnAddMember";
+            this.btnAddMember.Size = new System.Drawing.Size(122, 40);
+            this.btnAddMember.TabIndex = 22;
+            this.btnAddMember.Text = "Ajouter un membre";
+            this.btnAddMember.UseVisualStyleBackColor = true;
+            this.btnAddMember.Click += new System.EventHandler(this.btnAddMember_Click);
+            // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(917, 368);
+            this.ClientSize = new System.Drawing.Size(917, 373);
+            this.Controls.Add(this.btnAddMember);
             this.Controls.Add(this.lblConnectedUser);
             this.Controls.Add(this.tbxMembers);
             this.Controls.Add(this.tableLayoutPanel1);
@@ -289,6 +306,7 @@
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.TextBox tbxMembers;
         private System.Windows.Forms.Label lblConnectedUser;
+        private System.Windows.Forms.Button btnAddMember;
     }
 }
 

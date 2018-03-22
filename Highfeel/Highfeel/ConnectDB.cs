@@ -61,7 +61,7 @@ namespace Highfeel
         /// connexion à un compte enregistré sur la base de données
         /// </summary>
         /// <param name="username">Nom d'utilisateur</param>
-        /// <param name="password">Mot-de-passe</param>
+        /// <param name="password">Mot de passe</param>
         /// <returns></returns>
         public bool loginsql(string username, string password)
         {
@@ -88,10 +88,11 @@ namespace Highfeel
             return loginOK;
         }
 
-        public string getUserIdByUsername(string username) {
+        public string getUserIdByUsername(string username)
+        {
             string userId = "";
 
-            string sqlGetUserId = "SELECT `userID` FROM `user` WHERE `userName` = '" + username +"'";
+            string sqlGetUserId = "SELECT `userId` FROM `user` WHERE `userName` = '" + username + "'";
 
             if (OpenConnection())
             {
@@ -101,7 +102,7 @@ namespace Highfeel
 
                 while (data.Read())
                 {
-                    userId = data["userID"].ToString();
+                    userId = data["userId"].ToString();
                 }
 
                 data.Close();
@@ -122,7 +123,7 @@ namespace Highfeel
             /* Get the clanId of the created clan */
             string sqlGetClanId = "SELECT `clanId` FROM `clan` WHERE `clanName` = '" + clanName + "';";
 
-            
+
 
             if (OpenConnection())
             {
@@ -131,16 +132,16 @@ namespace Highfeel
                 dataCreateClan.Close();
 
                 MySqlCommand cmdGetClanId = new MySqlCommand(sqlGetClanId, this.connection);
-                MySqlDataReader dataGetClanId  = cmdGetClanId.ExecuteReader();
+                MySqlDataReader dataGetClanId = cmdGetClanId.ExecuteReader();
                 while (dataGetClanId.Read())
                 {
                     currentClanId = dataGetClanId["clanId"].ToString();
                 }
-                
+
                 dataGetClanId.Close();
 
                 /* Add the connected user as member of new clan */
-                string sqlAddUser = "INSERT INTO `highfeel`.`belongs` (`clanId`, `userID`) VALUES('" + currentClanId + "', '" + connectedUserId + "');";
+                string sqlAddUser = "INSERT INTO `highfeel`.`belongs` (`clanId`, `userId`) VALUES('" + currentClanId + "', '" + connectedUserId + "');";
                 MySqlCommand cmdAddUser = new MySqlCommand(sqlAddUser, this.connection);
                 MySqlDataReader dataAddUser = cmdAddUser.ExecuteReader();
                 dataAddUser.Close();
@@ -149,10 +150,11 @@ namespace Highfeel
             }
         }
 
-        public List<Clan> getAllClanByUser(string connectedUserId) {
+        public List<Clan> getAllClanByUser(string connectedUserId)
+        {
             List<Clan> list = new List<Clan>();
 
-            string sqlgetAllClan = "SELECT DISTINCT `clan`.`clanId`, `clan`.`clanName`, `clan`.`clanAdmin` FROM `clan`, `user`, `belongs` WHERE `clan`.`clanId` = `belongs`.`clanId` AND `belongs`.`userId` = '" + connectedUserId + "';";
+            string sqlgetAllClan = "SELECT DISTINCT `clan`.`clanId`, `clan`.`clanName`, `clan`.`clanAdmin` FROM `clan`, `user`, `belongs` WHERE `clan`.`clanId` = `belongs`.`clanId` AND `belongs`.`userId` = '" + connectedUserId + "' ORDER BY `clan`.`clanName`;";
 
             if (OpenConnection())
             {
@@ -165,11 +167,73 @@ namespace Highfeel
                 }
 
                 data.Close();
-                
+
                 CloseConnection();
             }
 
             return list;
-        }        
+        }
+
+        public List<string> getAllUsersByClan(string clanId)
+        {
+            List<string> list = new List<string>();
+
+            string sqlGetAllUsersByClan = "SELECT DISTINCT `user`.`userName` FROM `user`, `clan`, `belongs` WHERE `user`.`userId` = `belongs`.`userId` AND `belongs`.`clanId` = '" + clanId + "'";
+
+            if (OpenConnection())
+            {
+                MySqlCommand cmdGetUserByClan = new MySqlCommand(sqlGetAllUsersByClan, this.connection);
+                MySqlDataReader data = cmdGetUserByClan.ExecuteReader();
+
+                while (data.Read())
+                {
+                    list.Add((string)data["userName"]);
+                }
+
+                data.Close();
+
+                CloseConnection();
+            }
+
+            return list;
+        }
+
+        public List<string> getAllUsers()
+        {
+            List<string> list = new List<string>();
+            string sqlGetAllUsersByClan = "SELECT `user`.`userName` FROM `user`";
+
+            if (OpenConnection())
+            {
+                MySqlCommand cmdGetAllUsers = new MySqlCommand(sqlGetAllUsersByClan, this.connection);
+                MySqlDataReader data = cmdGetAllUsers.ExecuteReader();
+
+                while (data.Read())
+                {
+                    list.Add((string)data["userName"]);
+                }
+
+                data.Close();
+
+                CloseConnection();
+            }
+
+            return list;
+        }
+
+        public void addMember(string clanId, string username)
+        {
+            string sqlAddMember = "INSERT INTO `highfeel`.`belongs` (`clanId`, `userID`) VALUES ('" + clanId + "', '" + getUserIdByUsername(username) + "');";
+
+            if (OpenConnection())
+            {
+                MySqlCommand cmdAddUser = new MySqlCommand(sqlAddMember, this.connection);
+                MySqlDataReader data = cmdAddUser.ExecuteReader();
+
+                data.Close();
+
+                CloseConnection();
+            }
+        }
     }
 }
