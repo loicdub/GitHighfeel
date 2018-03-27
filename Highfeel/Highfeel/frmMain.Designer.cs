@@ -113,6 +113,7 @@
             this.pbxGrade6.Size = new System.Drawing.Size(58, 58);
             this.pbxGrade6.TabIndex = 10;
             this.pbxGrade6.TabStop = false;
+            this.pbxGrade6.Tag = "6";
             this.pbxGrade6.Click += new System.EventHandler(this.pbx_Click);
             // 
             // pbxGrade2
@@ -134,6 +135,7 @@
             this.pbxGrade8.Size = new System.Drawing.Size(58, 58);
             this.pbxGrade8.TabIndex = 12;
             this.pbxGrade8.TabStop = false;
+            this.pbxGrade8.Tag = "8";
             this.pbxGrade8.Click += new System.EventHandler(this.pbx_Click);
             // 
             // pbxGrade4
@@ -144,6 +146,7 @@
             this.pbxGrade4.Size = new System.Drawing.Size(58, 58);
             this.pbxGrade4.TabIndex = 13;
             this.pbxGrade4.TabStop = false;
+            this.pbxGrade4.Tag = "4";
             this.pbxGrade4.Click += new System.EventHandler(this.pbx_Click);
             // 
             // pbxGrade3
@@ -165,6 +168,7 @@
             this.pbxGrade5.Size = new System.Drawing.Size(58, 58);
             this.pbxGrade5.TabIndex = 15;
             this.pbxGrade5.TabStop = false;
+            this.pbxGrade5.Tag = "5";
             this.pbxGrade5.Click += new System.EventHandler(this.pbx_Click);
             // 
             // pbxGrade7
@@ -175,6 +179,7 @@
             this.pbxGrade7.Size = new System.Drawing.Size(58, 58);
             this.pbxGrade7.TabIndex = 16;
             this.pbxGrade7.TabStop = false;
+            this.pbxGrade7.Tag = "7";
             this.pbxGrade7.Click += new System.EventHandler(this.pbx_Click);
             // 
             // pbxGrade10
@@ -185,6 +190,7 @@
             this.pbxGrade10.Size = new System.Drawing.Size(58, 58);
             this.pbxGrade10.TabIndex = 17;
             this.pbxGrade10.TabStop = false;
+            this.pbxGrade10.Tag = "10";
             this.pbxGrade10.Click += new System.EventHandler(this.pbx_Click);
             // 
             // pbxGrade9
@@ -195,6 +201,7 @@
             this.pbxGrade9.Size = new System.Drawing.Size(58, 58);
             this.pbxGrade9.TabIndex = 18;
             this.pbxGrade9.TabStop = false;
+            this.pbxGrade9.Tag = "9";
             this.pbxGrade9.Click += new System.EventHandler(this.pbx_Click);
             // 
             // tbxMembers
@@ -219,6 +226,7 @@
             // 
             // btnAddMember
             // 
+            this.btnAddMember.Enabled = false;
             this.btnAddMember.Location = new System.Drawing.Point(783, 321);
             this.btnAddMember.Name = "btnAddMember";
             this.btnAddMember.Size = new System.Drawing.Size(122, 40);

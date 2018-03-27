@@ -123,8 +123,6 @@ namespace Highfeel
             /* Get the clanId of the created clan */
             string sqlGetClanId = "SELECT `clanId` FROM `clan` WHERE `clanName` = '" + clanName + "';";
 
-
-
             if (OpenConnection())
             {
                 MySqlCommand cmdCreateClan = new MySqlCommand(sqlCreateClan, this.connection);
@@ -137,7 +135,6 @@ namespace Highfeel
                 {
                     currentClanId = dataGetClanId["clanId"].ToString();
                 }
-
                 dataGetClanId.Close();
 
                 /* Add the connected user as member of new clan */
@@ -234,6 +231,83 @@ namespace Highfeel
 
                 CloseConnection();
             }
+        }
+
+        public void sendMood(string moodRate, string comment, string username, string selectedDate)
+        {
+            string newMoodId = "";
+            string currentUsername = getUserIdByUsername(username);
+            string sqlSendComment = "";
+
+            string sqlSendNote = "INSERT INTO `mood`(`moodRate`, `moodDate`) VALUES ('" + moodRate + "', '" + selectedDate + "'); ";
+
+            if (comment != "")
+            {
+                sqlSendComment = "INSERT INTO `comment`(`commentText`, `commentDate`, `userID`) VALUES ('" + comment + "', '" + selectedDate + "', '" + currentUsername + "');";
+            }
+
+            string sqlGetMoodId = "SELECT `moodID` FROM `mood` WHERE `moodID` = (SELECT MAX(`moodID`) FROM `mood`);";
+
+            if (OpenConnection())
+            {
+                MySqlCommand cmdSendNote = new MySqlCommand(sqlSendNote, this.connection);
+                MySqlDataReader dataAddNote = cmdSendNote.ExecuteReader();
+                dataAddNote.Close();
+
+                if (comment != "")
+                {
+                    MySqlCommand cmdSendComment = new MySqlCommand(sqlSendComment, this.connection);
+                    MySqlDataReader dataAddComment = cmdSendComment.ExecuteReader();
+                    dataAddComment.Close();
+                }
+
+                MySqlCommand cmdGetMoodId = new MySqlCommand(sqlGetMoodId, this.connection);
+                MySqlDataReader dataGetMoodId = cmdGetMoodId.ExecuteReader();
+                while (dataGetMoodId.Read())
+                {
+                    newMoodId = dataGetMoodId["moodID"].ToString();
+                }
+                dataGetMoodId.Close();
+
+                /* Add the connected user as the sender of the mood */
+                string sqlSendUser = "INSERT INTO `feels`(`userID`, `moodID`) VALUES (" + currentUsername + ", " + newMoodId + ");";
+                MySqlCommand cmdAttachUser = new MySqlCommand(sqlSendUser, this.connection);
+                MySqlDataReader dataAttachUser = cmdAttachUser.ExecuteReader();
+                dataAttachUser.Close();
+
+                CloseConnection();
+            }
+        }
+
+        public string getClanAdmin(string clanId)
+        {
+            string adminId = "";
+            string adminName = "";
+            string sqlGetAdminId   = "SELECT `clanAdmin` FROM `clan` WHERE `clanId` = " + clanId + ";";
+            string sqlGetAdminName = "SELECT `userName` FROM `user` WHERE `userId` = " + adminId + ";";
+
+            if (OpenConnection())
+            {
+                MySqlCommand cmdGetAdminId = new MySqlCommand(sqlGetAdminId, this.connection);
+                MySqlDataReader dataGetAdminId = cmdGetAdminId.ExecuteReader();
+                while (dataGetAdminId.Read())
+                {
+                    adminId = dataGetAdminId["clanAdmin"].ToString();
+                }
+                dataGetAdminId.Close();
+
+                MySqlCommand cmdGetAdminName = new MySqlCommand(sqlGetAdminName, this.connection);
+                MySqlDataReader dataGetAdminName = cmdGetAdminName.ExecuteReader();
+                while (dataGetAdminName.Read())
+                {
+                    adminName = dataGetAdminName["userId"].ToString();
+                }
+                dataGetAdminName.Close();
+
+                CloseConnection();
+            }
+
+            return adminName;
         }
     }
 }
