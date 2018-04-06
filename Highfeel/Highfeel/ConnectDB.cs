@@ -283,8 +283,7 @@ namespace Highfeel
         {
             string adminId = "";
             string adminName = "";
-            string sqlGetAdminId   = "SELECT `clanAdmin` FROM `clan` WHERE `clanId` = " + clanId + ";";
-            string sqlGetAdminName = "SELECT `userName` FROM `user` WHERE `userId` = " + adminId + ";";
+            string sqlGetAdminId = "SELECT `clanAdmin` FROM `clan` WHERE `clanId` = " + clanId + ";";
 
             if (OpenConnection())
             {
@@ -296,11 +295,12 @@ namespace Highfeel
                 }
                 dataGetAdminId.Close();
 
+                string sqlGetAdminName = "SELECT `userName` FROM `user` WHERE `userId` = '" + adminId + "';";
                 MySqlCommand cmdGetAdminName = new MySqlCommand(sqlGetAdminName, this.connection);
                 MySqlDataReader dataGetAdminName = cmdGetAdminName.ExecuteReader();
                 while (dataGetAdminName.Read())
                 {
-                    adminName = dataGetAdminName["userId"].ToString();
+                    adminName = dataGetAdminName["userName"].ToString();
                 }
                 dataGetAdminName.Close();
 
