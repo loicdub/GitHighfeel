@@ -35,7 +35,7 @@ namespace Highfeel
             pbxGrade9.BackgroundImage = Properties.Resources._9;
             pbxGrade10.BackgroundImage = Properties.Resources._10;
             
-            lblConnectedUser.Text = "Bonsoir, je suis Bob Lennon et vous êtes " + login.UserConnected + ".";
+            lblConnectedUser.Text = "Bonjour " + login.UserConnected + ".";
         }
 
         private void btnCreateClan_Click(object sender, EventArgs e)
