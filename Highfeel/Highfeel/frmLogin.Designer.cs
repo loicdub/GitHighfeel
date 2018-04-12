@@ -34,6 +34,7 @@
             this.tbxUsername = new System.Windows.Forms.TextBox();
             this.btnLogin = new System.Windows.Forms.Button();
             this.btnLoginCancel = new System.Windows.Forms.Button();
+            this.llblCreateUser = new System.Windows.Forms.LinkLabel();
             this.SuspendLayout();
             // 
             // label1
@@ -96,12 +97,24 @@
             this.btnLoginCancel.UseVisualStyleBackColor = true;
             this.btnLoginCancel.Click += new System.EventHandler(this.btnLoginCancel_Click);
             // 
+            // llblCreateUser
+            // 
+            this.llblCreateUser.AutoSize = true;
+            this.llblCreateUser.Location = new System.Drawing.Point(7, 103);
+            this.llblCreateUser.Name = "llblCreateUser";
+            this.llblCreateUser.Size = new System.Drawing.Size(85, 13);
+            this.llblCreateUser.TabIndex = 5;
+            this.llblCreateUser.TabStop = true;
+            this.llblCreateUser.Text = "Créer un compte";
+            this.llblCreateUser.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.llblCreateUser_LinkClicked);
+            // 
             // frmLogin
             // 
             this.AcceptButton = this.btnLogin;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(212, 102);
+            this.ClientSize = new System.Drawing.Size(212, 129);
+            this.Controls.Add(this.llblCreateUser);
             this.Controls.Add(this.btnLoginCancel);
             this.Controls.Add(this.btnLogin);
             this.Controls.Add(this.tbxUsername);
@@ -129,5 +142,6 @@
         private System.Windows.Forms.TextBox tbxUsername;
         private System.Windows.Forms.Button btnLogin;
         private System.Windows.Forms.Button btnLoginCancel;
+        private System.Windows.Forms.LinkLabel llblCreateUser;
     }
 }
