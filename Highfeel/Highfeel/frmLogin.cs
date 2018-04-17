@@ -87,5 +87,14 @@ namespace Highfeel
                 Application.Exit();
             }
         }
+
+        private void llblCreateUser_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            frmSignIn createUser = new frmSignIn();
+            if (createUser.ShowDialog() == DialogResult.OK)
+            {
+
+            }
+        }
     }
 }

@@ -34,8 +34,8 @@ namespace Highfeel
             pbxGrade8.BackgroundImage = Properties.Resources._8;
             pbxGrade9.BackgroundImage = Properties.Resources._9;
             pbxGrade10.BackgroundImage = Properties.Resources._10;
-
-            lblConnectedUser.Text = "Bonsoir, je suis Bob Lennon et vous êtes " + login.UserConnected + ".";
+            
+            lblConnectedUser.Text = "Bonjour " + login.UserConnected + ".";
         }
 
         private void btnCreateClan_Click(object sender, EventArgs e)
@@ -53,6 +53,15 @@ namespace Highfeel
             lbClan.DataSource = dbc.getAllClanByUser(dbc.getUserIdByUsername(login.UserConnected));
             lbClan.DisplayMember = "clanName";
             lbClan.ValueMember = "clanId";
+
+            if (login.UserConnected == dbc.getClanAdmin(lbClan.SelectedValue.ToString()))
+            {
+                btnAddMember.Enabled = true;
+            }
+            else
+            {
+                btnAddMember.Enabled = false;
+            }
         }
 
         private void UpdateMemberList()
@@ -67,7 +76,7 @@ namespace Highfeel
             catch (Exception)
             {
                 tbxMembers.Text = "(Aucun membre)";
-            }            
+            }
         }
 
         private void frmMain_Load(object sender, EventArgs e)
@@ -80,14 +89,6 @@ namespace Highfeel
         {
             tbxMembers.Text = "";
             UpdateMemberList();
-            if (login.UserConnected == dbc.getClanAdmin(lbClan.SelectedValue.ToString()))
-            {
-                btnAddMember.Enabled = true;
-            }
-            else
-            {
-                btnAddMember.Enabled = false;
-            }
         }
 
         private void btnAddMember_Click(object sender, EventArgs e)
