@@ -118,7 +118,7 @@ namespace Highfeel
             string currentClanId = "";
 
             /* Create a clan with the connected user as the admin*/
-            string sqlCreateClan = "INSERT INTO `highfeel`.`clan` (`clanName`, `clanAdmin`) VALUES ('" + clanName + "', '" + connectedUserId + "');";
+            string sqlCreateClan = "INSERT INTO `highfeel2`.`clan` (`clanName`, `clanAdmin`) VALUES ('" + clanName + "', '" + connectedUserId + "');";
 
             /* Get the clanId of the created clan */
             string sqlGetClanId = "SELECT `clanId` FROM `clan` WHERE `clanName` = '" + clanName + "';";
@@ -138,7 +138,7 @@ namespace Highfeel
                 dataGetClanId.Close();
 
                 /* Add the connected user as member of new clan */
-                string sqlAddUser = "INSERT INTO `highfeel`.`belongs` (`clanId`, `userId`) VALUES('" + currentClanId + "', '" + connectedUserId + "');";
+                string sqlAddUser = "INSERT INTO `highfeel2`.`belongs` (`clanId`, `userId`) VALUES('" + currentClanId + "', '" + connectedUserId + "');";
                 MySqlCommand cmdAddUser = new MySqlCommand(sqlAddUser, this.connection);
                 MySqlDataReader dataAddUser = cmdAddUser.ExecuteReader();
                 dataAddUser.Close();
@@ -220,7 +220,7 @@ namespace Highfeel
 
         public void addMember(string clanId, string username)
         {
-            string sqlAddMember = "INSERT INTO `highfeel`.`belongs` (`clanId`, `userID`) VALUES ('" + clanId + "', '" + getUserIdByUsername(username) + "');";
+            string sqlAddMember = "INSERT INTO `highfeel2`.`belongs` (`clanId`, `userID`) VALUES ('" + clanId + "', '" + getUserIdByUsername(username) + "');";
 
             if (OpenConnection())
             {

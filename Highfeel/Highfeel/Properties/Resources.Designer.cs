@@ -161,7 +161,7 @@ namespace Highfeel.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to highfeel.
+        ///   Looks up a localized string similar to highfeel2.
         /// </summary>
         internal static string database {
             get {

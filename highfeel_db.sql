@@ -12,6 +12,7 @@ CREATE TABLE user(
         userName     Varchar (50) NOT NULL ,
         userPassword Varchar (50) ,
         userMail     Varchar (50) ,
+        moodID       Int ,
         PRIMARY KEY (userID ) ,
         UNIQUE (userName ,userMail )
 )ENGINE=InnoDB;
@@ -57,17 +58,6 @@ CREATE TABLE comment(
 
 
 #------------------------------------------------------------
-# Table: feels
-#------------------------------------------------------------
-
-CREATE TABLE feels(
-        userID Int NOT NULL ,
-        moodID Int NOT NULL ,
-        PRIMARY KEY (userID ,moodID )
-)ENGINE=InnoDB;
-
-
-#------------------------------------------------------------
 # Table: belongs
 #------------------------------------------------------------
 
@@ -77,9 +67,8 @@ CREATE TABLE belongs(
         PRIMARY KEY (clanId ,userID )
 )ENGINE=InnoDB;
 
+ALTER TABLE user ADD CONSTRAINT FK_user_moodID FOREIGN KEY (moodID) REFERENCES mood(moodID);
 ALTER TABLE mood ADD CONSTRAINT FK_mood_clanId FOREIGN KEY (clanId) REFERENCES clan(clanId);
 ALTER TABLE comment ADD CONSTRAINT FK_comment_userID FOREIGN KEY (userID) REFERENCES user(userID);
-ALTER TABLE feels ADD CONSTRAINT FK_feels_userID FOREIGN KEY (userID) REFERENCES user(userID);
-ALTER TABLE feels ADD CONSTRAINT FK_feels_moodID FOREIGN KEY (moodID) REFERENCES mood(moodID);
 ALTER TABLE belongs ADD CONSTRAINT FK_belongs_clanId FOREIGN KEY (clanId) REFERENCES clan(clanId);
 ALTER TABLE belongs ADD CONSTRAINT FK_belongs_userID FOREIGN KEY (userID) REFERENCES user(userID);
