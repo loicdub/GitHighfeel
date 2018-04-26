@@ -243,7 +243,7 @@ namespace Highfeel
 
             if (comment != "")
             {
-                sqlSendComment = "INSERT INTO `comment`(`commentText`, `commentDate`, `userID`) VALUES ('" + comment + "', '" + selectedDate + "', '" + currentUsername + "');";
+                sqlSendComment = "INSERT INTO `comment`(`commentText`, `commentDate`, `userID`) VALUES (" + comment + ", " + selectedDate + "," + currentUsername + ");";
             }
 
             string sqlGetMoodId = "SELECT `moodID` FROM `mood` WHERE `moodID` = (SELECT MAX(`moodID`) FROM `mood`);";
@@ -270,7 +270,7 @@ namespace Highfeel
                 dataGetMoodId.Close();
 
                 /* Add the connected user as the sender of the mood */
-                string sqlSendUser = "INSERT INTO `feels`(`userID`, `moodID`, `clanId`) VALUES (" + currentUsername + ", " + newMoodId + ", " + moodClan +");";
+                string sqlSendUser = "INSERT INTO `feels`(`userID`, `moodID`, `clanId`) VALUES (" + currentUsername + ", " + newMoodId + ", " + moodClan + ");";
                 MySqlCommand cmdAttachUser = new MySqlCommand(sqlSendUser, this.connection);
                 MySqlDataReader dataAttachUser = cmdAttachUser.ExecuteReader();
                 dataAttachUser.Close();
@@ -320,9 +320,31 @@ namespace Highfeel
                 MySqlCommand cmdCreateUser = new MySqlCommand(sqlCreateUser, this.connection);
                 MySqlDataReader dataCreateUser = cmdCreateUser.ExecuteReader();
                 dataCreateUser.Close();
-                
+
                 CloseConnection();
             }
+        }
+
+        public void checkUserVote(int userId, int clanId)
+        {
+            string moodId = "";
+
+            string sqlCheckMoodId = "SELECT `feels`.`moodID` FROM `feels` WHERE `feels`.`userID` = " + userId + " AND `feels`.`clanId`= " + clanId + ");";
+
+            string sqlCheckMoodDate = "SELECT `mood`.`moodDate` FROM `mood` WHERE `mood`.`moodID` = " + moodId + ";";
+
+
+            if (OpenConnection())
+            {
+                MySqlCommand cmdGetMoodId = new MySqlCommand(sqlCheckMoodId, this.connection);
+                MySqlDataReader dataGetMoodId = cmdGetMoodId.ExecuteReader();
+                while (dataGetMoodId.Read())
+                {
+                    moodId = dataGetMoodId["moodID"].ToString();
+                }
+                dataGetMoodId.Close();
+            }
+
         }
     }
 }
