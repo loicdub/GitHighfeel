@@ -23,6 +23,7 @@ namespace Highfeel
             securityTextbox();
         }
 
+        #region secure button
         private void securityTextbox()
         {
             if (tbxUsername.Text.Length > 0 && tbxPassword.Text.Length > 0)
@@ -34,6 +35,17 @@ namespace Highfeel
                 btnLogin.Enabled = false;
             }
         }
+
+        private void tbxUsername_TextChanged(object sender, EventArgs e)
+        {
+            securityTextbox();
+        }
+
+        private void tbxPassword_TextChanged(object sender, EventArgs e)
+        {
+            securityTextbox();
+        }
+        #endregion
 
         // Vérifie les données de connection utilisateur
         public bool loginOK()
@@ -54,15 +66,7 @@ namespace Highfeel
             return loginIsOk;
         }
 
-        private void tbxUsername_TextChanged(object sender, EventArgs e)
-        {
-            securityTextbox();
-        }
-
-        private void tbxPassword_TextChanged(object sender, EventArgs e)
-        {
-            securityTextbox();
-        }
+        
 
         private void btnLogin_Click(object sender, EventArgs e)
         {

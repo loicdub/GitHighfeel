@@ -99,11 +99,11 @@
             // lblAverageGrade
             // 
             this.lblAverageGrade.AutoSize = true;
-            this.lblAverageGrade.Location = new System.Drawing.Point(158, 321);
+            this.lblAverageGrade.Location = new System.Drawing.Point(809, 335);
             this.lblAverageGrade.Name = "lblAverageGrade";
-            this.lblAverageGrade.Size = new System.Drawing.Size(75, 13);
+            this.lblAverageGrade.Size = new System.Drawing.Size(90, 13);
             this.lblAverageGrade.TabIndex = 5;
-            this.lblAverageGrade.Text = "Moyenne de : ";
+            this.lblAverageGrade.Text = "Moyenne de : 5.8";
             // 
             // pbxGrade6
             // 
@@ -218,18 +218,18 @@
             // 
             this.lblConnectedUser.AutoSize = true;
             this.lblConnectedUser.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblConnectedUser.Location = new System.Drawing.Point(290, 330);
+            this.lblConnectedUser.Location = new System.Drawing.Point(364, 330);
             this.lblConnectedUser.Name = "lblConnectedUser";
-            this.lblConnectedUser.Size = new System.Drawing.Size(68, 20);
+            this.lblConnectedUser.Size = new System.Drawing.Size(136, 20);
             this.lblConnectedUser.TabIndex = 21;
-            this.lblConnectedUser.Text = "Label 1";
+            this.lblConnectedUser.Text = "Connected user";
             // 
             // btnAddMember
             // 
             this.btnAddMember.Enabled = false;
-            this.btnAddMember.Location = new System.Drawing.Point(783, 321);
+            this.btnAddMember.Location = new System.Drawing.Point(158, 321);
             this.btnAddMember.Name = "btnAddMember";
-            this.btnAddMember.Size = new System.Drawing.Size(122, 40);
+            this.btnAddMember.Size = new System.Drawing.Size(200, 40);
             this.btnAddMember.TabIndex = 22;
             this.btnAddMember.Text = "Ajouter un membre";
             this.btnAddMember.UseVisualStyleBackColor = true;
