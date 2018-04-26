@@ -233,7 +233,7 @@ namespace Highfeel
             }
         }
 
-        public void sendMood(string moodRate, string comment, string username, string selectedDate)
+        public void sendMood(string moodRate, string comment, string username, string selectedDate, string moodClan)
         {
             string newMoodId = "";
             string currentUsername = getUserIdByUsername(username);
@@ -270,7 +270,7 @@ namespace Highfeel
                 dataGetMoodId.Close();
 
                 /* Add the connected user as the sender of the mood */
-                string sqlSendUser = "INSERT INTO `feels`(`userID`, `moodID`) VALUES (" + currentUsername + ", " + newMoodId + ");";
+                string sqlSendUser = "INSERT INTO `feels`(`userID`, `moodID`, `clanId`) VALUES (" + currentUsername + ", " + newMoodId + ", " + moodClan +");";
                 MySqlCommand cmdAttachUser = new MySqlCommand(sqlSendUser, this.connection);
                 MySqlDataReader dataAttachUser = cmdAttachUser.ExecuteReader();
                 dataAttachUser.Close();
@@ -308,6 +308,21 @@ namespace Highfeel
             }
 
             return adminName;
+        }
+
+        public void createUser(string username, string password, string email)
+        {
+            /* Create a clan with the connected user as the admin*/
+            string sqlCreateUser = "INSERT INTO `user`(`userName`, `userPassword`, `userMail`) VALUES ('" + username + "', '" + password + "', '" + email + "')";
+
+            if (OpenConnection())
+            {
+                MySqlCommand cmdCreateUser = new MySqlCommand(sqlCreateUser, this.connection);
+                MySqlDataReader dataCreateUser = cmdCreateUser.ExecuteReader();
+                dataCreateUser.Close();
+                
+                CloseConnection();
+            }
         }
     }
 }

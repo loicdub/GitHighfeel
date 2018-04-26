@@ -23,7 +23,7 @@ namespace Highfeel
             login.ShowDialog(this);
             List<PictureBox> pbx = new List<PictureBox>();
             dateTimePicker1.MaxDate = DateTime.Now;
-            
+
             pbxGrade1.BackgroundImage = Properties.Resources._1;
             pbxGrade2.BackgroundImage = Properties.Resources._2;
             pbxGrade3.BackgroundImage = Properties.Resources._3;
@@ -34,7 +34,7 @@ namespace Highfeel
             pbxGrade8.BackgroundImage = Properties.Resources._8;
             pbxGrade9.BackgroundImage = Properties.Resources._9;
             pbxGrade10.BackgroundImage = Properties.Resources._10;
-            
+
             lblConnectedUser.Text = "Bonjour " + login.UserConnected + ".";
         }
 
@@ -54,6 +54,11 @@ namespace Highfeel
             lbClan.DisplayMember = "clanName";
             lbClan.ValueMember = "clanId";
 
+            checkAdmin();
+        }
+
+        private void checkAdmin()
+        {
             if (login.UserConnected == dbc.getClanAdmin(lbClan.SelectedValue.ToString()))
             {
                 btnAddMember.Enabled = true;
@@ -89,6 +94,7 @@ namespace Highfeel
         {
             tbxMembers.Text = "";
             UpdateMemberList();
+            try { checkAdmin(); } catch (Exception) { }
         }
 
         private void btnAddMember_Click(object sender, EventArgs e)
@@ -105,7 +111,7 @@ namespace Highfeel
                 catch (Exception)
                 {
                     MessageBox.Show("Ce membre est déjà dans ce clan !");
-                }                
+                }
             }
         }
 
@@ -116,7 +122,9 @@ namespace Highfeel
             if (comment.ShowDialog() == DialogResult.OK)
             {
                 string selectedDate = dateTimePicker1.Value.ToString("yyyy-MM-dd");
-                dbc.sendMood(((PictureBox)sender).Tag.ToString(), comment.Comment, login.UserConnected, selectedDate);
+                string currentClan = lbClan.SelectedValue.ToString();
+
+                dbc.sendMood(((PictureBox)sender).Tag.ToString(), comment.Comment, login.UserConnected, selectedDate, currentClan);
             }
         }
     }
