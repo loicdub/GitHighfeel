@@ -26,7 +26,7 @@ namespace Highfeel
         public void createClan() {
             string clanName = tbxClanName.Text;
 
-            dbc.createClan(clanName, dbc.getUserIdByUsername(_connectedUser));
+            dbc.createClan(clanName, dbc.getUserIdByUsername(_connectedUser).ToString());
         }
 
         private void tbxClanName_TextChanged(object sender, EventArgs e)

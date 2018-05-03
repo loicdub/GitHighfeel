@@ -50,7 +50,7 @@ namespace Highfeel
 
         private void UpdateClanList()
         {
-            lbClan.DataSource = dbc.getAllClanByUser(dbc.getUserIdByUsername(login.UserConnected));
+            lbClan.DataSource = dbc.getAllClanByUser(dbc.getUserIdByUsername(login.UserConnected).ToString());
             lbClan.DisplayMember = "clanName";
             lbClan.ValueMember = "clanId";
 
@@ -128,7 +128,10 @@ namespace Highfeel
                 string selectedDate = dateTimePicker1.Value.ToString("yyyy-MM-dd");
                 string currentClan = lbClan.SelectedValue.ToString();
 
-                dbc.sendMood(((PictureBox)sender).Tag.ToString(), comment.Comment, login.UserConnected, selectedDate, currentClan);
+                if (dbc.checkUserVote(dbc.getUserIdByUsername(login.UserConnected), Convert.ToInt32(currentClan), selectedDate))
+                {
+                    dbc.sendMood(((PictureBox)sender).Tag.ToString(), comment.Comment, login.UserConnected, selectedDate, currentClan);
+                }
             }
         }
     }

@@ -74,7 +74,7 @@ namespace Highfeel
             {
                 MySqlCommand cmd = new MySqlCommand(loginStr, this.connection);
                 Int32 countRes = Convert.ToInt32(cmd.ExecuteScalar());
-                
+
                 if (countRes == 1)
                 {
                     loginOK = true;
@@ -88,29 +88,25 @@ namespace Highfeel
             return loginOK;
         }
 
-        public string getUserIdByUsername(string username)
+        public int getUserIdByUsername(string username)
         {
-            string userId = "";
+            int uid = 0;
 
             string sqlGetUserId = "SELECT `userId` FROM `user` WHERE `userName` = '" + username + "'";
 
             if (OpenConnection())
             {
-                MySqlCommand cmd = new MySqlCommand(sqlGetUserId, this.connection);
-
-                MySqlDataReader data = cmd.ExecuteReader();
-
-                while (data.Read())
+                MySqlCommand cmdGetUserId = new MySqlCommand(sqlGetUserId, this.connection);
+                MySqlDataReader dataGetUserId = cmdGetUserId.ExecuteReader();
+                while (dataGetUserId.Read())
                 {
-                    userId = data["userId"].ToString();
+                    uid = Convert.ToInt32(dataGetUserId["userId"]);
                 }
-
-                data.Close();
-
+                dataGetUserId.Close();
                 CloseConnection();
             }
 
-            return userId;
+            return uid;
         }
 
         public void createClan(string clanName, string connectedUserId)
@@ -236,7 +232,7 @@ namespace Highfeel
         public void sendMood(string moodRate, string comment, string username, string selectedDate, string moodClan)
         {
             string newMoodId = "";
-            string currentUsername = getUserIdByUsername(username);
+            string currentUsername = getUserIdByUsername(username).ToString();
             string sqlSendComment = "";
 
             string sqlSendNote = "INSERT INTO `mood`(`moodRate`, `moodDate`) VALUES ('" + moodRate + "', '" + selectedDate + "'); ";
@@ -323,28 +319,6 @@ namespace Highfeel
 
                 CloseConnection();
             }
-        }
-
-        public void checkUserVote(int userId, int clanId)
-        {
-            string moodId = "";
-
-            string sqlCheckMoodId = "SELECT `feels`.`moodID` FROM `feels` WHERE `feels`.`userID` = " + userId + " AND `feels`.`clanId`= " + clanId + ");";
-
-            string sqlCheckMoodDate = "SELECT `mood`.`moodDate` FROM `mood` WHERE `mood`.`moodID` = " + moodId + ";";
-
-
-            if (OpenConnection())
-            {
-                MySqlCommand cmdGetMoodId = new MySqlCommand(sqlCheckMoodId, this.connection);
-                MySqlDataReader dataGetMoodId = cmdGetMoodId.ExecuteReader();
-                while (dataGetMoodId.Read())
-                {
-                    moodId = dataGetMoodId["moodID"].ToString();
-                }
-                dataGetMoodId.Close();
-            }
-
         }
     }
 }
