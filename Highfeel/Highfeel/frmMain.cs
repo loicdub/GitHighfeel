@@ -59,14 +59,18 @@ namespace Highfeel
 
         private void checkAdmin()
         {
-            if (login.UserConnected == dbc.getClanAdmin(lbClan.SelectedValue.ToString()))
+            try
             {
-                btnAddMember.Enabled = true;
+                if (login.UserConnected == dbc.getClanAdmin(lbClan.SelectedValue.ToString()))
+                {
+                    btnAddMember.Enabled = true;
+                }
+                else
+                {
+                    btnAddMember.Enabled = false;
+                }
             }
-            else
-            {
-                btnAddMember.Enabled = false;
-            }
+            catch (Exception) { }
         }
 
         private void UpdateMemberList()
