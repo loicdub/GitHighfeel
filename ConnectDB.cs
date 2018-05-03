@@ -113,15 +113,6 @@ namespace Highfeel
             return userId;
         }
 
-        public string getUsernameById(int userId)
-        {
-            int id;
-
-            string sqlGetUsername = "SELECT `userName` FROM `user` WHERE `userID` = @userId";
-
-            return "";
-        }
-
         public void createClan(string clanName, string connectedUserId)
         {
             string currentClanId = "";
@@ -245,67 +236,53 @@ namespace Highfeel
         public void sendMood(string moodRate, string comment, string username, string selectedDate, string moodClan)
         {
             string newMoodId = "";
-            string currentId = getUserIdByUsername(username);
+            string currentUsername = getUserIdByUsername(username);
             string date = getLastCommentDatePerUserId(username);
-            string sqlUpdateComment = "";
             string sqlSendComment = "";
-            string sqlUpdateNote = "";
+            string sqlUpdateComment = "";
 
             string sqlSendNote = "INSERT INTO `mood`(`moodRate`, `moodDate`) VALUES ('" + moodRate + "', '" + selectedDate + "'); ";
 
-
-            if (DateTime.Today.ToString("yyyy-MM-dd") == date)
+            if (comment != "")
             {
-                sqlUpdateComment = "UPDATE `comment` SET `commentText`='" + @comment + "' WHERE `userID` ='" + currentId + "' AND `commentDate` = '" + @date + "' AND `feels`.`clanId` = '" + moodClan + "'";
-
-                sqlUpdateNote = "UPDATE `mood` SET `moodRate`='" + @moodRate + "' WHERE `moodDate` = '" + @date + "' AND `feels`.`clanId` = '" + moodClan + "'";
-
+                if (DateTime.Today.ToString("yyyy-MM-dd") == date)
+                {
+                    sqlUpdateComment = "UPDATE `comment` SET `commentText`='" + @comment + "' WHERE `userID` ='" + @currentUsername + "' AND `commentDate` = '" + @date + "'";
+                }
+                else
+                {
+                    sqlSendComment = "INSERT INTO `comment`(`commentText`, `commentDate`, `userID`) VALUES ('" + comment + "', '" + selectedDate + "', '" + currentUsername + "');";
+                }
             }
-            else
-            {
-                sqlSendComment = "INSERT INTO `comment`(`commentText`, `commentDate`, `userID`) VALUES ('" + comment + "', '" + selectedDate + "', '" + currentId + "');";
-            }
-
 
             string sqlGetMoodId = "SELECT `moodID` FROM `mood` WHERE `moodID` = (SELECT MAX(`moodID`) FROM `mood`);";
 
             if (OpenConnection())
             {
+                MySqlCommand cmdSendNote = new MySqlCommand(sqlSendNote, this.connection);
+                MySqlDataReader dataAddNote = cmdSendNote.ExecuteReader();
+                dataAddNote.Close();
 
-                if (DateTime.Today.ToString("yyyy-MM-dd") == date)
+                if (comment != "")
                 {
-                    MySqlCommand cmdUpdateComment = new MySqlCommand(sqlUpdateComment, this.connection);
-                    MySqlDataReader dataUpdateComment = cmdUpdateComment.ExecuteReader();
-                    dataUpdateComment.Close();
-
-                    MySqlCommand cmdUpdateNote = new MySqlCommand(sqlUpdateNote, this.connection);
-                    MySqlDataReader dataUpdateNote = cmdUpdateNote.ExecuteReader();
-                    dataUpdateNote.Close();
-                }
-                else
-                {
-                    MySqlCommand cmdSendNote = new MySqlCommand(sqlSendNote, this.connection);
-                    MySqlDataReader dataAddNote = cmdSendNote.ExecuteReader();
-                    dataAddNote.Close();
-
                     MySqlCommand cmdSendComment = new MySqlCommand(sqlSendComment, this.connection);
                     MySqlDataReader dataAddComment = cmdSendComment.ExecuteReader();
                     dataAddComment.Close();
-
-                    MySqlCommand cmdGetMoodId = new MySqlCommand(sqlGetMoodId, this.connection);
-                    MySqlDataReader dataGetMoodId = cmdGetMoodId.ExecuteReader();
-                    while (dataGetMoodId.Read())
-                    {
-                        newMoodId = dataGetMoodId["moodID"].ToString();
-                    }
-                    dataGetMoodId.Close();
-
-                    /* Add the connected user as the sender of the mood */
-                    string sqlSendUser = "INSERT INTO `feels`(`userID`, `moodID`, `clanId`) VALUES (" + currentId + ", " + newMoodId + ", " + moodClan + ");";
-                    MySqlCommand cmdAttachUser = new MySqlCommand(sqlSendUser, this.connection);
-                    MySqlDataReader dataAttachUser = cmdAttachUser.ExecuteReader();
-                    dataAttachUser.Close();
                 }
+
+                MySqlCommand cmdGetMoodId = new MySqlCommand(sqlGetMoodId, this.connection);
+                MySqlDataReader dataGetMoodId = cmdGetMoodId.ExecuteReader();
+                while (dataGetMoodId.Read())
+                {
+                    newMoodId = dataGetMoodId["moodID"].ToString();
+                }
+                dataGetMoodId.Close();
+
+                /* Add the connected user as the sender of the mood */
+                string sqlSendUser = "INSERT INTO `feels`(`userID`, `moodID`, `clanId`) VALUES (" + currentUsername + ", " + newMoodId + ", " + moodClan + ");";
+                MySqlCommand cmdAttachUser = new MySqlCommand(sqlSendUser, this.connection);
+                MySqlDataReader dataAttachUser = cmdAttachUser.ExecuteReader();
+                dataAttachUser.Close();
 
                 CloseConnection();
             }
@@ -313,10 +290,10 @@ namespace Highfeel
 
         public string getLastCommentDatePerUserId(string username)
         {
-            string currentId = getUserIdByUsername(username);
-            DateTime date = DateTime.MinValue;
+            string currentUsername = getUserIdByUsername(username);
+            DateTime date = DateTime.Now;
 
-            string sqlgetcommentdateperid = "select `commentDate` from `comment` where `commentDate` = '" + DateTime.Today.ToString("yyyy-MM-dd") + "' and userID = '" + currentId + "'";
+            string sqlgetcommentdateperid = "select `commentDate` from `comment` where `commentDate` = '" + DateTime.Today + "' and userID = '" + currentUsername + "'";
 
             if (OpenConnection())
             {
@@ -326,17 +303,9 @@ namespace Highfeel
                 {
                     date = (DateTime)dataGetCommentDate["commentDate"];
                 }
-
-                if (date != DateTime.MinValue)
-                {
-                    date = DateTime.Today;
-
-                }
-
                 dataGetCommentDate.Close();
                 CloseConnection();
             }
-
             return date.ToString("yyyy-MM-dd");
         }
 
