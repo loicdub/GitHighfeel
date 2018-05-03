@@ -232,14 +232,27 @@ namespace Highfeel
         public void sendMood(string moodRate, string comment, string username, string selectedDate, string moodClan)
         {
             string newMoodId = "";
+<<<<<<< HEAD
             string currentUsername = getUserIdByUsername(username).ToString();
+=======
+            string currentUsername = getUserIdByUsername(username);
+            string date = getLastCommentDatePerUserId(username);
+>>>>>>> b7974a64673492e5e4d087d745f1dd32649b318c
             string sqlSendComment = "";
+            string sqlUpdateComment = "";
 
             string sqlSendNote = "INSERT INTO `mood`(`moodRate`, `moodDate`) VALUES ('" + moodRate + "', '" + selectedDate + "'); ";
 
             if (comment != "")
             {
-                sqlSendComment = "INSERT INTO `comment`(`commentText`, `commentDate`, `userID`) VALUES ('" + comment + "', '" + selectedDate + "', '" + currentUsername + "');";
+                if (DateTime.Today.ToString("yyyy-MM-dd") == date)
+                {
+                    sqlUpdateComment = "UPDATE `comment` SET `commentText`='" + @comment + "' WHERE `userID` ='" + @currentUsername + "' AND `commentDate` = '" + @date + "'";
+                }
+                else
+                {
+                    sqlSendComment = "INSERT INTO `comment`(`commentText`, `commentDate`, `userID`) VALUES ('" + comment + "', '" + selectedDate + "', '" + currentUsername + "');";
+                }
             }
 
             string sqlGetMoodId = "SELECT `moodID` FROM `mood` WHERE `moodID` = (SELECT MAX(`moodID`) FROM `mood`);";
@@ -273,6 +286,27 @@ namespace Highfeel
 
                 CloseConnection();
             }
+        }
+
+        public string getLastCommentDatePerUserId(string username)
+        {
+            string currentUsername = getUserIdByUsername(username);
+            DateTime date = DateTime.Now;
+
+            string sqlgetcommentdateperid = "select `commentDate` from `comment` where `commentDate` = '" + DateTime.Today + "' and userID = '" + currentUsername + "'";
+
+            if (OpenConnection())
+            {
+                MySqlCommand cmdGetCommentDate = new MySqlCommand(sqlgetcommentdateperid, this.connection);
+                MySqlDataReader dataGetCommentDate = cmdGetCommentDate.ExecuteReader();
+                while (dataGetCommentDate.Read())
+                {
+                    date = (DateTime)dataGetCommentDate["commentDate"];
+                }
+                dataGetCommentDate.Close();
+                CloseConnection();
+            }
+            return date.ToString("yyyy-MM-dd");
         }
 
         public string getClanAdmin(string clanId)
