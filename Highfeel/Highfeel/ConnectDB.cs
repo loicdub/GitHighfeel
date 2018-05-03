@@ -243,7 +243,7 @@ namespace Highfeel
 
             if (comment != "")
             {
-                sqlSendComment = "INSERT INTO `comment`(`commentText`, `commentDate`, `userID`) VALUES ('" + comment + "', '" + selectedDate + "','" + currentUsername + "');";
+                sqlSendComment = "INSERT INTO `comment`(`commentText`, `commentDate`, `userID`) VALUES ('" + comment + "', '" + selectedDate + "', '" + currentUsername + "');";
             }
 
             string sqlGetMoodId = "SELECT `moodID` FROM `mood` WHERE `moodID` = (SELECT MAX(`moodID`) FROM `mood`);";
