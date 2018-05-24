@@ -80,7 +80,7 @@
             // 
             this.dateTimePicker1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.dateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dateTimePicker1.Location = new System.Drawing.Point(364, 12);
+            this.dateTimePicker1.Location = new System.Drawing.Point(364, 32);
             this.dateTimePicker1.Name = "dateTimePicker1";
             this.dateTimePicker1.Size = new System.Drawing.Size(186, 20);
             this.dateTimePicker1.TabIndex = 3;
@@ -88,7 +88,7 @@
             // pbxGrade1
             // 
             this.pbxGrade1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.pbxGrade1.Location = new System.Drawing.Point(364, 38);
+            this.pbxGrade1.Location = new System.Drawing.Point(364, 58);
             this.pbxGrade1.Name = "pbxGrade1";
             this.pbxGrade1.Size = new System.Drawing.Size(58, 58);
             this.pbxGrade1.TabIndex = 4;
@@ -108,7 +108,7 @@
             // pbxGrade6
             // 
             this.pbxGrade6.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.pbxGrade6.Location = new System.Drawing.Point(492, 102);
+            this.pbxGrade6.Location = new System.Drawing.Point(492, 122);
             this.pbxGrade6.Name = "pbxGrade6";
             this.pbxGrade6.Size = new System.Drawing.Size(58, 58);
             this.pbxGrade6.TabIndex = 10;
@@ -119,7 +119,7 @@
             // pbxGrade2
             // 
             this.pbxGrade2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.pbxGrade2.Location = new System.Drawing.Point(428, 38);
+            this.pbxGrade2.Location = new System.Drawing.Point(428, 58);
             this.pbxGrade2.Name = "pbxGrade2";
             this.pbxGrade2.Size = new System.Drawing.Size(58, 58);
             this.pbxGrade2.TabIndex = 11;
@@ -130,7 +130,7 @@
             // pbxGrade8
             // 
             this.pbxGrade8.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.pbxGrade8.Location = new System.Drawing.Point(428, 166);
+            this.pbxGrade8.Location = new System.Drawing.Point(428, 186);
             this.pbxGrade8.Name = "pbxGrade8";
             this.pbxGrade8.Size = new System.Drawing.Size(58, 58);
             this.pbxGrade8.TabIndex = 12;
@@ -141,7 +141,7 @@
             // pbxGrade4
             // 
             this.pbxGrade4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.pbxGrade4.Location = new System.Drawing.Point(364, 102);
+            this.pbxGrade4.Location = new System.Drawing.Point(364, 122);
             this.pbxGrade4.Name = "pbxGrade4";
             this.pbxGrade4.Size = new System.Drawing.Size(58, 58);
             this.pbxGrade4.TabIndex = 13;
@@ -152,7 +152,7 @@
             // pbxGrade3
             // 
             this.pbxGrade3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.pbxGrade3.Location = new System.Drawing.Point(492, 38);
+            this.pbxGrade3.Location = new System.Drawing.Point(492, 58);
             this.pbxGrade3.Name = "pbxGrade3";
             this.pbxGrade3.Size = new System.Drawing.Size(58, 58);
             this.pbxGrade3.TabIndex = 14;
@@ -163,7 +163,7 @@
             // pbxGrade5
             // 
             this.pbxGrade5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.pbxGrade5.Location = new System.Drawing.Point(428, 102);
+            this.pbxGrade5.Location = new System.Drawing.Point(428, 122);
             this.pbxGrade5.Name = "pbxGrade5";
             this.pbxGrade5.Size = new System.Drawing.Size(58, 58);
             this.pbxGrade5.TabIndex = 15;
@@ -174,7 +174,7 @@
             // pbxGrade7
             // 
             this.pbxGrade7.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.pbxGrade7.Location = new System.Drawing.Point(364, 166);
+            this.pbxGrade7.Location = new System.Drawing.Point(364, 186);
             this.pbxGrade7.Name = "pbxGrade7";
             this.pbxGrade7.Size = new System.Drawing.Size(58, 58);
             this.pbxGrade7.TabIndex = 16;
@@ -185,7 +185,7 @@
             // pbxGrade10
             // 
             this.pbxGrade10.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.pbxGrade10.Location = new System.Drawing.Point(428, 230);
+            this.pbxGrade10.Location = new System.Drawing.Point(428, 250);
             this.pbxGrade10.Name = "pbxGrade10";
             this.pbxGrade10.Size = new System.Drawing.Size(58, 58);
             this.pbxGrade10.TabIndex = 17;
@@ -196,7 +196,7 @@
             // pbxGrade9
             // 
             this.pbxGrade9.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.pbxGrade9.Location = new System.Drawing.Point(492, 166);
+            this.pbxGrade9.Location = new System.Drawing.Point(492, 186);
             this.pbxGrade9.Name = "pbxGrade9";
             this.pbxGrade9.Size = new System.Drawing.Size(58, 58);
             this.pbxGrade9.TabIndex = 18;
@@ -218,7 +218,7 @@
             // 
             this.lblConnectedUser.AutoSize = true;
             this.lblConnectedUser.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblConnectedUser.Location = new System.Drawing.Point(364, 330);
+            this.lblConnectedUser.Location = new System.Drawing.Point(360, 9);
             this.lblConnectedUser.Name = "lblConnectedUser";
             this.lblConnectedUser.Size = new System.Drawing.Size(136, 20);
             this.lblConnectedUser.TabIndex = 21;

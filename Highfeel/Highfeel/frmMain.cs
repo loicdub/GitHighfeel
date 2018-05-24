@@ -79,7 +79,14 @@ namespace Highfeel
             {
                 for (int i = 0; i < dbc.getAllUsersByClan(lbClan.SelectedValue.ToString()).Count; i++)
                 {
-                    tbxMembers.Text += dbc.getAllUsersByClan(lbClan.SelectedValue.ToString())[i] + ", ";
+                    if (tbxMembers.Text == "")
+                    {
+                        tbxMembers.Text += dbc.getAllUsersByClan(lbClan.SelectedValue.ToString())[i];
+                    }
+                    else
+                    {
+                        tbxMembers.Text += ", " + dbc.getAllUsersByClan(lbClan.SelectedValue.ToString())[i];
+                    }
                 }
             }
             catch (Exception)
